@@ -1,0 +1,13 @@
+config:
+  aws:allowedAccountIds:
+    - "847186409068"
+  aws:defaultTags:
+    tags:
+      ENV: staging
+      MAINTAINER: hotline@klocel.com
+      MANAGED_BY: Klocel
+      PROJECT: LogiK
+      PROVISIONED_BY: Pulumi
+  aws:profile: logik-dev
+  aws:region: eu-west-1
+  logik:domain: staging.logik.klocel.com

@@ -1,0 +1,53 @@
+[tool.poetry]
+authors = ["Louis Amon <louis@nuage.studio>"]
+description = "Strawberry APIs for LogiK"
+name = "logik-graphql-api"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+Faker = "latest"
+Flask = "^2.0.2"
+PyJWT = "^2.3.0"
+SQLAlchemy = "^1.4.31"
+aws-lambda-powertools = "^1.22.0"
+boto3 = "^1.20.13"
+boto3-stubs = {version = "latest", extras = ["s3"]}
+faker-microservice = "^2.0.0"
+jwcrypto = "^1.0"
+pg8000 = "^1.23.0"
+python = ">3.9,<3.10"
+python-dotenv = "^0.19.2"
+python-slugify = "^5.0.2"
+serverless-wsgi = "^2.0.2"
+sqlalchemy-aurora-data-api = "^0.3.1"
+strawberry-graphql = {version = "<1.0.0", extras = ["pydantic"]}
+
+[tool.poetry.dev-dependencies]
+black = "latest"
+flake8 = "latest"
+ipykernel = "^6.7.0"
+mypy = "latest"
+pulumi = "latest"
+pulumi-aws = "latest"
+pulumi-docker = "latest"
+pulumi-docker-buildkit = "latest"
+pulumi-random = "latest"
+pylint = "latest"
+pyright = "^0.0.13"
+types-python-slugify = "^5.0.2"
+
+[tool.poetry.extras]
+pulumi = ["pulumi", "pulumi-aws", "pulumi-docker"]
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.isort]
+line_length = 88
+profile = "black"
+skip_gitignore = true
+
+[tool.pyright]
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md#sample-pyprojecttoml-file
+strict = ["infrastructure"]

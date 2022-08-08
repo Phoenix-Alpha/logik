@@ -1,0 +1,46 @@
+{
+  "version": "2.0",
+  "routeKey": "$default",
+  "rawPath": "/graphql",
+  "rawQueryString": "",
+  "cookies": [],
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ3b3Jrc3BhY2VfaWQiOiJkdW1teSIsInVzZXJuYW1lIjoiZHVtbXkiLCJwZXJtaXNzaW9ucyI6eyJBcnRpY2xlIjoiUkVBRCJ9fQ.yC955hRIFsZkWr3OMSsKeENZbXnZRWD5bBg5XNBZz3o"
+  },
+  "queryStringParameters": {},
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "api-id",
+    "authentication": {
+      "clientCert": {
+        "clientCertPem": "CERT_CONTENT",
+        "subjectDN": "www.example.com",
+        "issuerDN": "Example issuer",
+        "serialNumber": "a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1:a1",
+        "validity": {
+          "notBefore": "May 28 12:30:02 2019 GMT",
+          "notAfter": "Aug  5 09:36:04 2021 GMT"
+        }
+      }
+    },
+    "domainName": "id.execute-api.us-east-1.amazonaws.com",
+    "domainPrefix": "id",
+    "http": {
+      "method": "POST",
+      "path": "/graphql",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "IP",
+      "userAgent": "agent"
+    },
+    "requestId": "id",
+    "routeKey": "$default",
+    "stage": "$default",
+    "time": "12/Mar/2020:19:03:58 +0000",
+    "timeEpoch": 1583348638390
+  },
+  "body": "{\"query\": \"{ article(id: 1) { id name length width height boxWeight additionalDescription } }\"}",
+  "pathParameters": {},
+  "isBase64Encoded": false,
+  "stageVariables": {}
+}

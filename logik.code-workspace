@@ -1,0 +1,63 @@
+{
+  "folders": [
+    {
+      "name": "🍓  backend",
+      "path": "src/backend"
+    },
+    {
+      "name": "⚡️  frontend",
+      "path": "src/frontend"
+    },
+    {
+      "name": "🏗  architecture",
+      "path": "architecture"
+    },
+    {
+      "name": "🦖  documentation",
+      "path": "src/documentation"
+    },
+    {
+      "name": "✨  LogiK",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.venv": true,
+      "**/yarn.lock": true,
+      "**/package-lock.json": true
+    },
+    "python.languageServer": "Pylance",
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.activateEnvironment": true,
+    "python.formatting.provider": "black",
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.rulers": [
+        88
+      ]
+    },
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "[json|yaml|html|typescript|typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "visualstudioexptteam.vscodeintellicode",
+      "christian-kohler.path-intellisense",
+      "davidanson.vscode-markdownlint",
+      "boto3typed.boto3-ide"
+    ]
+  }
+}

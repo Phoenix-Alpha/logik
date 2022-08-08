@@ -1,0 +1,71 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  AWS_PROFILE: logik-dev
+  REGISTRY_URI: 847186409068.dkr.ecr.eu-west-1.amazonaws.com/logik-dev
+  FUNCTION_NAME: ftp-auth-function
+  ARCHITECTURE: arm64
+  PLATFORM: "linux/{{.ARCHITECTURE}}"
+  IMAGE_TAG: "{{.REGISTRY_URI}}:{{.FUNCTION_NAME}}-{{.ARCHITECTURE}}"
+
+tasks:
+  default:
+    desc: Connects to SFTP server via CLI
+    vars:
+      ENDPOINT: s-1727847267b841b9b.server.transfer.eu-west-1.amazonaws.com
+    cmds:
+      - sftp jdoe@{{.ENDPOINT}}
+
+  build:
+    desc: Builds the Docker image to be used by AWS Lambda locally
+    cmds:
+      - >
+        docker build .
+        -t {{.IMAGE_TAG}}
+        -f Dockerfile
+        --platform {{.PLATFORM}}
+        --compress
+      # - >
+      #   docker buildx build .
+      #   --platform {{.PLATFORM}}
+      #   --tag {{.IMAGE_TAG}}
+      #   --push
+
+  push:
+    desc: Pushes the API onto AWS ECR
+    deps: [build]
+    cmds:
+      - aws --profile {{.AWS_PROFILE}} ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin {{.REGISTRY_URI}}
+      - docker push {{.IMAGE_TAG}}
+      - aws --profile {{.AWS_PROFILE}} lambda update-function-code --function-name {{.FUNCTION_NAME}} --image-uri {{.IMAGE_TAG}} > /dev/null
+
+  tail:
+    desc: Tails the logs of the deployed Lambda function
+    cmds:
+      - aws --profile {{.AWS_PROFILE}} logs tail /aws/lambda/{{.FUNCTION_NAME}} --follow
+
+  explore:
+    desc: Runs a shell inside of the Lambda's Docker image
+    deps: [build]
+    cmds:
+      - docker run -it --rm --platform {{.PLATFORM}} --entrypoint /bin/bash {{.IMAGE_TAG}}
+
+  run:
+    desc: Runs the Lambda service locally using the Runtime Interface Emulator (RIE)
+    deps: [build]
+    cmds:
+      - >
+        docker run -it --rm
+        --publish {{.API_PORT}}:8080
+        --env SECRET_KEY=123456abcdef
+        --platform {{.PLATFORM}}
+        {{.IMAGE_TAG}}
+
+  emulate:
+    desc: Sends a payload against a local Lambda
+    cmds:
+      # - curl -XPOST "http://localhost:{{.API_PORT}}/2015-03-31/functions/function/invocations" -d @events/homepage.json
+      - curl -XPOST "http://localhost:{{.API_PORT}}/2015-03-31/functions/function/invocations" -d @events/login.json
+      - curl -XPOST "http://localhost:{{.API_PORT}}/2015-03-31/functions/function/invocations" -d @events/article.json

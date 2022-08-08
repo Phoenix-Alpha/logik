@@ -1,0 +1,5 @@
+name: logik
+runtime: python
+description: Logistics platform
+config: ./infrastructure/stacks/
+main: ./

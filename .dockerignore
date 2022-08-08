@@ -1,0 +1,8 @@
+Dockerfile
+.vscode/
+.venv/
+.task/
+Taskfile.yml
+__pycache__/
+mypy_cache/
+node_modules/

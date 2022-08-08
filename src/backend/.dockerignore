@@ -1,0 +1,12 @@
+# Python
+.venv/
+.mypy_cache/
+__pycache__/
+
+# Taskfiles
+.task/
+
+# Pulumi
+Pulumi.yaml
+__main__.py
+infrastructure/

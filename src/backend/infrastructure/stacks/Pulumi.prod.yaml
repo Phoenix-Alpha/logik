@@ -1,0 +1,13 @@
+config:
+  aws:allowedAccountIds:
+    - "375738830680"
+  aws:defaultTags:
+    tags:
+      ENV: prod
+      MAINTAINER: hotline@klocel.com
+      MANAGED_BY: Klocel
+      PROJECT: LogiK
+      PROVISIONED_BY: Pulumi
+  aws:profile: logik-prod
+  aws:region: eu-west-1
+  logik:domain: logik.klocel.com

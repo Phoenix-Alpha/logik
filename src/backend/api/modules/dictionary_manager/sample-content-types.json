@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Article",
+    "description": "",
+    "displayField": "title",
+    "fields": [
+      {
+        "id": "id",
+        "name": "id",
+        "type": "Integer",
+        "localized": false,
+        "required": true,
+        "validations": [
+          {
+            "unique": true
+          }
+        ],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "title",
+        "name": "Title",
+        "type": "Symbol",
+        "localized": false,
+        "required": true,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "description",
+        "name": "Description",
+        "type": "RichText",
+        "localized": false,
+        "required": false,
+        "validations": [
+          {
+            "nodes": {}
+          }
+        ],
+        "disabled": false,
+        "omitted": false
+      }
+    ]
+  },
+  {
+    "name": "Parcel",
+    "description": "A box containing Articles",
+    "fields": [
+      {
+        "id": "id",
+        "name": "id",
+        "type": "Integer",
+        "localized": false,
+        "required": true,
+        "validations": [
+          {
+            "unique": true
+          }
+        ],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "articles",
+        "name": "articles",
+        "type": "Array",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false,
+        "items": {
+          "type": "Link",
+          "validations": [
+            {
+              "linkContentType": ["article"]
+            }
+          ],
+          "linkType": "Entry"
+        }
+      }
+    ]
+  }
+]

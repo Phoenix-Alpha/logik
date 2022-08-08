@@ -1,0 +1,17 @@
+# Artifacts
+dist/
+build/
+
+# Env
+**.env
+
+# Taskfile
+.task/
+
+# Python
+.venv/
+__pycache__/
+.mypy_cache/
+
+# Node
+node_modules/
